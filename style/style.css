@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.container{
+    min-width: 400px;
+    margin: 40px auto;
+    width: 90vw;
+    height: 100vh;
+    border: black 2px solid;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.class_off{
+    display: none;
+}
+
+.player{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 30%;
+}
+
+.play{
+    background-image: url(../icons/play.png);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+}
+
+.pause{
+    background-image: url(../icons/pause.png);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+}
+
+
+.game_buttons{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    justify-items: center;
+    margin : 0 auto;
+    width: 300px;
+    top: 40%;
+}
+
+
+.menu_button{
+    border-radius: 10%;
+    width: 150px;
+    height: 50px;
+    border: black 2px solid;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+
+.creature_stule{
+    width: 100px;
+    height: 300px;
+
+}

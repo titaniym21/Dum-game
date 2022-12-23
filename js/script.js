@@ -1,83 +1,64 @@
 'use strict';
 
+
 //массив заставок
 const images = [
     {
-        src: 'img/1.jpg',
+        src: 'img/backgraund/1.jpg',
         alt: '1'
     },
     {
-        src: 'img/2.jpg',
+        src: 'img/backgraund/2.jpg',
         alt: '2'
     },
     {
-        src: 'img/3.jpg',
+        src: 'img/backgraund/3.jpg',
         alt: '3'
     },
     {
-        src: 'img/4.jpg',
+        src: 'img/backgraund/4.jpg',
         alt: '4'
     },
     {
-        src: 'img/5.jpg',
+        src: 'img/backgraund/5.jpg',
         alt: '5'
     },
     {
-        src: 'img/6.jpg',
+        src: 'img/backgraund/6.jpg',
         alt: '6'
     }
 ];
 // заставка при старте игры
-document.querySelector('.container').style.backgroundImage = `url(${images[0].src})`;
+document.querySelector('.main').style.backgroundImage = `url(${images[0].src})`;
+document.getElementById('game-window').classList.add('class_off');
 
 //выходим из игры сменяем заставку и убираем кнопки (наверно поменяем на описание как играть)
 function exitGame() {
-    document.getElementById('star-game').remove();
-    document.getElementById('exit-game').remove();
-    document.querySelector('.container').style.backgroundImage = `url(${images[5].src})`;
+    document.getElementById('star-game').classList.remove('class_off');
+    document.getElementById('exit-game').classList.add('class_off');
+    document.querySelector('.main').style.backgroundImage = `url(${images[5].src})`;
+    document.getElementById('game-window').classList.add('class_off');
 }
 
+function startGame() {
+    document.getElementById('exit-game').classList.remove('class_off');
+    document.querySelector('.main').style.backgroundImage = `url(${images[1].src})`;
+    document.getElementById('star-game').classList.add('class_off');
+    document.getElementById('game-window').classList.remove('class_off');
+}
+
+document.getElementById('star-game').addEventListener('click', startGame);
 document.getElementById('exit-game').addEventListener('click', exitGame);
 
-//нада будет тело игры и функии с игроком в отдельном файле сделать
 
 // клас общий для всех существ
 class Creature {
-    constructor(name, health, damage, armor, images) {
+    constructor(name, health, damage, armor, idElement) {
         this.name = name;
         this.health = health;
         this.damage = damage;
         this.armor = armor;
-        this.images = images;
-    }
-    //метод для атаки
-    attack(target) {
-        target.health -= this.damage;
-    }
-    //метод для защиты
-    defence(target) {
-        target.damage -= this.armor;
-    }
-}
-//наслудуемся от существа и создаем клас игрока
-class Player extends Creature {
-    constructor(name, health, damage, armor, images) {
-        super(name, health, damage, armor, images);
-    }
-    //метод для атаки
-    attack(target) {
-        target.health -= this.damage;
-    }
-    //метод для защиты
-    defence(target) {
-        target.damage -= this.armor;
-    }
-}
-
-//наслудуемся от существа и создаем клас монстра
-class Monster extends Creature {
-    constructor(name, health, damage, armor, images) {
-        super(name, health, damage, armor, images);
+        this.idElement = idElement;
     }
     //метод для атаки
     attack(target) {
@@ -107,21 +88,38 @@ class Observer {
 }
 
 //игрок
-const player = new Player('Doom Slayer', 100, 10, 5, 'картинка');
+const player = new Creature('Doom Slayer', 100, 10, 5);
 
 //кибердемон
-const monster = new Monster('Cyberdemon', 100, 10, 5, 'картинка');
+const cyberDemon = new Creature('Cyber Demon1', 100, 10, 5, document.getElementById('monster1'));
+const cyberDemon1 = new Creature('Cyber Demon2', 100, 10, 5, document.getElementById('monster2'));
+const cyberDemon2 = new Creature('Cyber Demon3', 100, 10, 5 , document.getElementById('monster3'));
+const cyberDemon3 = new Creature('Cyber Demon4', 100, 10, 5 , document.getElementById('monster4'));
+const cyberDemon4 = new Creature('Cyber Demon5', 100, 10, 5 , document.getElementById('monster5'));
+const cyberDemon5 = new Creature('Cyber Demon6', 100, 10, 5 , document.getElementById('monster6'));
+
+//создаем обсервер
+const game = new Observer();
+//подписываем игрока
+game.subscribe(player);
+//подписываем кибердемона
+game.subscribe(cyberDemon);
+game.subscribe(cyberDemon1);
+game.subscribe(cyberDemon2);
+game.subscribe(cyberDemon3);
+game.subscribe(cyberDemon4);
+game.subscribe(cyberDemon5);
 
 
 
-// переходим в игру сменяем заставку и убираем кнопки
-function startGame() {
-    document.querySelector('.container').style.backgroundImage = `url(${images[1].src})`;
-    document.getElementById('star-game').remove();
-    document.getElementById('exit-game').remove();
 
-}
 
-document.getElementById('star-game').addEventListener('click', startGame);
+
+
+
+
+
+
+
 
 

@@ -9,56 +9,62 @@ body,html{
     height: 100%;
 }
 
-
-
-.container{
-    min-width: 400px;
-    /* margin: 40px auto; */
-    /* width: 90vw; */
+.main {
+    display: grid;
+    grid-template-rows: 8% 92%;
     width: 100%;
     height: 100%;
-    border: black 2px solid;
+    min-width: 400px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    border: black 2px solid;
 }
 
-.class_off{
+.main-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.class_off {
     display: none;
 }
 
-.player{
-    /* margin-top: 20px;
-    margin-left: 20px; */
+.player {
+    position: absolute;
+    left: 5%;
     width: 60px;
-    /* height: 60px; */
-    height: 20%;
+    height: 60px;
     cursor: pointer;
     border-radius: 30%;
 }
 
-.play{
-    background-image: url(../icons/play.png);
+.play {
+    background-image: url(../img/icons_music/play.png);
     background-size: 60px 60px;
     background-repeat: no-repeat;
 }
 
-.pause{
-    background-image: url(../icons/pause.png);
+.pause {
+    background-image: url(../img/icons_music/pause.png);
     background-size: 60px 60px;
     background-repeat: no-repeat;
 }
 
 
-.game_buttons{
-    position: relative;
+.game_buttons {
+    position: absolute;
+    right: 5%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     justify-items: center;
-    margin : 0 auto;
+    margin: 0 auto;
     width: 300px;
-    top: 40%;
 }
 
 
@@ -83,29 +89,29 @@ body,html{
 }
 
 .gameMain {
+
     width: 100%;
-    height: 80%;
 }
 
 .arenaBox {
     width: 100%;
-    height: 50%;
 }
 
 .personBox {
+    position: absolute;
+    bottom: 0;
     width: 100%;
-    height: 50%;
 }
 
 .personWeapon {
     display: flex;
     justify-content: center;
-    height: 70%;
+
 }
 
 .personBar {
     width: 100%;
-    height: 30%;
+
     background-color: rgb(121, 116, 116);
     display: flex;
 }
@@ -117,10 +123,10 @@ body,html{
 }
 
 .personBarAmmo,.personBarHeal,.personBarArms{
-    height: 100%;
     width: 15%;
     border-right: 2px solid darkgray;
 }
+
 
 .redText {
     font-size: 36px;
@@ -137,3 +143,4 @@ body,html{
     /* background-position: center; */
     background-repeat: no-repeat;
 }
+

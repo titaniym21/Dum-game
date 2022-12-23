@@ -11,14 +11,24 @@
     <script defer src="./js/music.js"></script>
 </head>
 <body>
-    <div class="container">
+<div class="main">
+    <div class="container main-menu">
         <div id="audio-button" class="player"></div>
         <div class="game_buttons">
             <div id="star-game" class="menu_button">Start game</div>
             <div id="exit-game" class="menu_button">Exit</div>
         </div>
-        <div class="gameMain">
-            <div class="arenaBox"></div>
+    </div>
+    <div class="container main-game">
+        <div class="gameMain" id="game-window">
+            <div class="arenaBox">
+                <div class="monster" id="monster1"></div>
+                <div class="monster" id="monster2"></div>
+                <div class="monster" id="monster3"></div>
+                <div class="monster" id="monster4"></div>
+                <div class="monster" id="monster5"></div>
+                <div class="monster" id="monster6"></div>
+            </div>
             <div class="personBox">
                 <div class="personWeapon">
                     <img src="./img/icon/weapon1.gif" alt="">
@@ -33,16 +43,17 @@
                         <p class="personArmorTextAbout">Health</p>
                     </div>
                     <div class="personBarArms">
-                        <p class="">123456</p>
-                        <p>arms</p>
+                        <p class="personArmorText redText">123456</p>
+                        <p class="personArmorTextAbout">arms</p>
                     </div>
                     <div class="personIcon"></div>
-                </div> 
+                </div>
             </div>
-            
+
         </div>
-         
+
     </div>
+</div>
 
 </body>
 </html>

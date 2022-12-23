@@ -78,7 +78,9 @@ class Observer {
         this.observers.push(observer);
     }
     unsubscribe(observer) {
-        this.observers = this.observers.filter(obs => obs !== observer);
+        if (this.observers.includes(observer)) {
+            this.observers.splice(this.observers.indexOf(observer), 1);
+        }
     }
     fire(action) {
         this.observers.forEach(observer => {
@@ -109,6 +111,23 @@ game.subscribe(cyberDemon2);
 game.subscribe(cyberDemon3);
 game.subscribe(cyberDemon4);
 game.subscribe(cyberDemon5);
+
+
+
+function checkLife() {
+    if (player.health <= 0) {
+        alert('Game Over');
+        exitGame();
+    }
+    if (cyberDemon.health <= 0 && cyberDemon1.health <= 0 && cyberDemon2.health <= 0 && cyberDemon3.health <= 0 && cyberDemon4.health <= 0 && cyberDemon5.health <= 0) {
+        alert('You Win');
+        exitGame();
+    }
+}
+
+setInterval(checkLife, 2000);
+
+
 
 
 

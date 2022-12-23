@@ -89,13 +89,10 @@ body,html{
 }
 
 .gameMain {
-
     width: 100%;
 }
 
-.arenaBox {
-    width: 100%;
-}
+
 
 .personBox {
     position: absolute;
@@ -144,3 +141,17 @@ body,html{
     background-repeat: no-repeat;
 }
 
+.arenaBox {
+    display: flex;
+    width: 100%;
+}
+
+.monster{
+    width: 200px;
+    height: 500px;
+    background-image: url(../img/monsters/1.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}

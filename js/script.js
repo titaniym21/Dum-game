@@ -34,17 +34,16 @@ document.getElementById('game-window').classList.add('class_off');
 
 //выходим из игры сменяем заставку и убираем кнопки (наверно поменяем на описание как играть)
 function exitGame() {
-    document.getElementById('star-game').classList.remove('class_off');
-    document.getElementById('exit-game').classList.add('class_off');
     document.querySelector('.main').style.backgroundImage = `url(${images[5].src})`;
     document.getElementById('game-window').classList.add('class_off');
 }
 
 function startGame() {
-    document.getElementById('exit-game').classList.remove('class_off');
     document.querySelector('.main').style.backgroundImage = `url(${images[1].src})`;
-    document.getElementById('star-game').classList.add('class_off');
     document.getElementById('game-window').classList.remove('class_off');
+    //после старта игры меняем обновляем все данные
+    player.health = 100;
+    cyberDemon.health = 100;
 }
 
 document.getElementById('star-game').addEventListener('click', startGame);
@@ -57,16 +56,15 @@ class Creature {
         this.name = name;
         this.health = health;
         this.damage = damage;
-        this.armor = armor;
         this.idElement = idElement;
     }
     //метод для атаки
     attack(target) {
         target.health -= this.damage;
     }
-    //метод для защиты
-    defence(target) {
-        target.damage -= this.armor;
+    //метод для обновления данных
+    update() {
+        this.idElement.textContent = this.health;
     }
 }
 //взаемодейстиве с класами будем делать через Обсервер
@@ -74,58 +72,54 @@ class Observer {
     constructor() {
         this.observers = [];
     }
+    //подписываемся на событие
     subscribe(observer) {
         this.observers.push(observer);
     }
+    //отписываемся от события
     unsubscribe(observer) {
-        if (this.observers.includes(observer)) {
-            this.observers.splice(this.observers.indexOf(observer), 1);
-        }
-    }
-    fire(action) {
-        this.observers.forEach(observer => {
-            observer.update(action);
-        });
+        this.observers = this.observers.filter(obs => obs !== observer);
     }
 }
 
+
 //игрок
-const player = new Creature('Doom Slayer', 100, 10, 5);
+const player = new Creature('Doom Slayer', 100, 10, 5, document.getElementById('gamer'));
 
 //кибердемон
 const cyberDemon = new Creature('Cyber Demon1', 100, 10, 5, document.getElementById('monster1'));
-const cyberDemon1 = new Creature('Cyber Demon2', 100, 10, 5, document.getElementById('monster2'));
-const cyberDemon2 = new Creature('Cyber Demon3', 100, 10, 5 , document.getElementById('monster3'));
-const cyberDemon3 = new Creature('Cyber Demon4', 100, 10, 5 , document.getElementById('monster4'));
-const cyberDemon4 = new Creature('Cyber Demon5', 100, 10, 5 , document.getElementById('monster5'));
-const cyberDemon5 = new Creature('Cyber Demon6', 100, 10, 5 , document.getElementById('monster6'));
 
 //создаем обсервер
 const game = new Observer();
-//подписываем игрока
+//подписываем всех на всех
 game.subscribe(player);
-//подписываем кибердемона
 game.subscribe(cyberDemon);
-game.subscribe(cyberDemon1);
-game.subscribe(cyberDemon2);
-game.subscribe(cyberDemon3);
-game.subscribe(cyberDemon4);
-game.subscribe(cyberDemon5);
+player.attack(cyberDemon);
+cyberDemon.attack(player);
 
-
-
-function checkLife() {
+//проверка на победу
+function сheckWin() {
     if (player.health <= 0) {
-        alert('Game Over');
-        exitGame();
+        document.querySelector('.main').style.backgroundImage = `url(${images[6].src})`;
+        document.getElementById('game-window').classList.add('class_off');
     }
-    if (cyberDemon.health <= 0 && cyberDemon1.health <= 0 && cyberDemon2.health <= 0 && cyberDemon3.health <= 0 && cyberDemon4.health <= 0 && cyberDemon5.health <= 0) {
-        alert('You Win');
-        exitGame();
+    if (cyberDemon.health <= 0) {
+        document.querySelector('.main').style.backgroundImage = `url(${images[5].src})`;
+        document.getElementById('game-window').classList.add('class_off');
     }
 }
 
-setInterval(checkLife, 2000);
+//атака по клику на иконку врага
+document.getElementById('monster1').addEventListener('click', () => {
+    player.attack(cyberDemon);
+    cyberDemon.update();
+    сheckWin();
+    console.log(cyberDemon.health);
+});
+
+
+
+
 
 
 

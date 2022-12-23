@@ -1,15 +1,22 @@
-body{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body,html{  
+    width: 100%;
+    height: 100%;
 }
 
 
 
 .container{
     min-width: 400px;
-    margin: 40px auto;
-    width: 90vw;
-    height: 100vh;
+    /* margin: 40px auto; */
+    /* width: 90vw; */
+    width: 100%;
+    height: 100%;
     border: black 2px solid;
     background-size: cover;
     background-repeat: no-repeat;
@@ -21,10 +28,11 @@ body{
 }
 
 .player{
-    margin-top: 20px;
-    margin-left: 20px;
+    /* margin-top: 20px;
+    margin-left: 20px; */
     width: 60px;
-    height: 60px;
+    /* height: 60px; */
+    height: 20%;
     cursor: pointer;
     border-radius: 30%;
 }
@@ -72,5 +80,60 @@ body{
 .creature_stule{
     width: 100px;
     height: 300px;
+}
 
+.gameMain {
+    width: 100%;
+    height: 80%;
+}
+
+.arenaBox {
+    width: 100%;
+    height: 50%;
+}
+
+.personBox {
+    width: 100%;
+    height: 50%;
+}
+
+.personWeapon {
+    display: flex;
+    justify-content: center;
+    height: 70%;
+}
+
+.personBar {
+    width: 100%;
+    height: 30%;
+    background-color: rgb(121, 116, 116);
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.personBarAmmo,.personBarHeal,.personBarArms{
+    height: 100%;
+    width: 15%;
+    border-right: 2px solid darkgray;
+}
+
+.redText {
+    font-size: 36px;
+    color: red;
+}
+
+.personIcon {
+    height: 100%;
+    width: 15%;
+    border-right: 2px solid darkgray;
+    background-color: rgb(26, 25, 25);
+    background-image: url(../img/icon/pesonFace.gif);
+    background-size: 65%;
+    /* background-position: center; */
+    background-repeat: no-repeat;
 }

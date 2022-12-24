@@ -43,20 +43,23 @@ function startGame() {
     document.getElementById('game-window').classList.remove('class_off');
     //после старта игры меняем обновляем все данные
     player.health = 100;
-    cyberDemon.health = 100;
+    cyberDemon.health = 100
+    heal.style.width = `100%`
 }
 
 document.getElementById('star-game').addEventListener('click', startGame);
 document.getElementById('exit-game').addEventListener('click', exitGame);
 
+let heal = document.querySelector(`.healMonster`)
+heal.style.width = `100%`
 
 // клас общий для всех существ
 class Creature {
     constructor(name, health, damage, armor, idElement) {
         this.name = name;
-        this.health = health;
+        this.health = parseInt(heal.style.width);
         this.damage = damage;
-        this.idElement = idElement;
+        this.idElement = heal;
     }
     //метод для атаки
     attack(target) {
@@ -64,7 +67,7 @@ class Creature {
     }
     //метод для обновления данных
     update() {
-        this.idElement.textContent = this.health;
+        this.idElement.style.width = this.health + `%`;
     }
 }
 //взаемодейстиве с класами будем делать через Обсервер
@@ -87,7 +90,10 @@ class Observer {
 const player = new Creature('Doom Slayer', 100, 10, 5, document.getElementById('gamer'));
 
 //кибердемон
+
+
 const cyberDemon = new Creature('Cyber Demon1', 100, 10, 5, document.getElementById('monster1'));
+
 
 //создаем обсервер
 const game = new Observer();

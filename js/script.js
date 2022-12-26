@@ -124,9 +124,22 @@ document.getElementById('monster1').addEventListener('click', () => {
 });
 
 
+//интервал атаки монстра
 
+// const healPerson = document.querySelector(`.personHealText`);
+// const healPersonAbout = document.querySelector(`.personHealTextAbout`);
 
-
+// const intervalAttack = setInterval (() => {
+//     let heal = parseInt(healPerson.textContent);
+//     if(healPerson.textContent !== '0') {
+//         heal -= 10
+//         healPerson.textContent = parseFloat(heal)
+//     } else {
+//         healPersonAbout.textContent = ``
+//         healPerson.textContent = `DEAD`
+//         clearInterval(intervalAttack)
+//     }
+// },2000)
 
 
 

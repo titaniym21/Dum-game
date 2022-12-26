@@ -92,53 +92,59 @@ body,html{
     width: 100%;
 }
 
-
-
-.personBox {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-.personWeapon {
-    display: flex;
-    justify-content: center;
-
-}
-
-.personBar {
-    width: 100%;
-
-    background-color: rgb(121, 116, 116);
-    display: flex;
-}
-
 .flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.personBarAmmo,.personBarHeal,.personBarArms{
-    width: 15%;
-    border-right: 2px solid darkgray;
+.personBox {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 10%;
 }
 
+.personBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
 
-.redText {
+.personBarHeal {
+    padding: 0 10px 0 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    background-color: rgb(102, 150, 156);
+    border: 1px solid rgb(27, 85, 66);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.personHealText {
     font-size: 36px;
-    color: red;
+    font-style: italic;
+    font-weight: 800;
 }
 
-.personIcon {
-    height: 100%;
-    width: 15%;
-    border-right: 2px solid darkgray;
-    background-color: rgb(26, 25, 25);
-    background-image: url(../img/icon/pesonFace.gif);
-    background-size: 65%;
-    /* background-position: center; */
+.personHealTextAbout {
+    font-size: 24px;
+    font-style: italic;
+}
+
+.personWeapon {
+    position: fixed;
+    width: 30%;
+    height: 30%;
+    bottom: 2px;
+    right: 10%;
+    background-image: url(../img/icon/weaponPistole.png);
+    background-size: auto 100%;
     background-repeat: no-repeat;
+    background-position: bottom;
 }
 
 .arenaBox {

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body,html{  
+body, html {
     width: 100%;
     height: 100%;
 }
@@ -68,7 +68,7 @@ body,html{
 }
 
 
-.menu_button{
+.menu_button {
     border-radius: 10%;
     width: 150px;
     height: 50px;
@@ -83,7 +83,7 @@ body,html{
 }
 
 
-.creature_stule{
+.creature_stule {
     width: 100px;
     height: 300px;
 }
@@ -92,11 +92,7 @@ body,html{
     width: 100%;
 }
 
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .personBox {
     width: 100%;
@@ -150,10 +146,12 @@ body,html{
 .arenaBox {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 50px;
     width: 100%;
 }
 
-.monster{
+.monster {
     width: 200px;
     height: 500px;
     background-image: url(../img/monsters/1.jpg);
@@ -173,8 +171,6 @@ body,html{
 }
 
 .healMonster {
-    width: 100%;
     height: 100%;
     background-color: rgb(163, 5, 5);
-    
 }

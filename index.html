@@ -2,47 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Doom Game</title>
-    
-    <link rel="stylesheet" href="./style/style.css">
-    <script defer src="./js/script.js"></script>
+    <link href="./style/style.css" rel="stylesheet">
+    <script defer src="./js/creature.js"></script>
+    <script defer src="./js/observer.js"></script>
+    <script defer src="./js/game-level.js"></script>
     <script defer src="./js/music.js"></script>
+    <script defer src="./js/script.js"></script>
 </head>
 <body>
 <div class="main">
     <div class="container main-menu">
-        <div id="audio-button" class="player"></div>
+        <div class="player" id="audio-button"></div>
         <div class="game_buttons">
-            <div id="star-game" class="menu_button">Start game</div>
-            <div id="exit-game" class="menu_button">Exit</div>
+            <div class="menu_button" id="star-game">Start game</div>
+            <div class="menu_button" id="exit-game">Exit</div>
         </div>
     </div>
     <div class="container main-game">
         <div class="gameMain" id="game-window">
-            <div class="arenaBox">
-                <div class="monster" id="monster1">
-                    <div class="healMonsterBox">
-                        <div class="healMonster"></div>
-                    </div>
-                </div>
+            <div class="arenaBox" id="test">
             </div>
-            <div class="personBox">
+            <div class="personBox" id="player">
                 <div class="personBar">
                     <div class="personBarHeal">
                         <p class="personHealText personTextDecor">100</p>
                         <p class="personHealTextAbout personTextDecor">:Health</p>
                     </div>
                     <div class="personWeapon"></div>
-                    <div id="gamer" class="personIcon"></div>
+                    <div class="personIcon"></div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
-
 </body>
 </html>

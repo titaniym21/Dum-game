@@ -17,7 +17,6 @@ document.getElementById('audio-button').classList.add('play');
 
 document.getElementById('audio-button').addEventListener('click', function () {
     if (audio.paused) {
-
         document.getElementById('audio-button').classList.remove('play');
         document.getElementById('audio-button').classList.add('pause');
         audio.play();
@@ -26,7 +25,6 @@ document.getElementById('audio-button').addEventListener('click', function () {
         document.getElementById('audio-button').classList.remove('pause');
         document.getElementById('audio-button').classList.add('play');
         audio.pause();
-
     }
 });
 

@@ -5,9 +5,9 @@ function level1() {
     document.querySelector('.main').style.backgroundImage = 'url(img/background/2.jpg)';
     document.getElementById('game-window').classList.remove('class_off');
     //создаем монстров
-    let monster1 = new Monster('monster1', 100, 10, 'monster1');
-    let monster2 = new Monster('monster2', 100, 10, 'monster2');
-    let monster3 = new Monster('monster3', 100, 10, 'monster3');
+    let monster1 = new Monster('monster1', 100, 10, 'monster1', 'url(img/monsters/1.png)');
+    let monster2 = new Monster('monster2', 100, 10, 'monster2', 'url(img/monsters/1.png)');
+    let monster3 = new Monster('monster3', 100, 10, 'monster3', 'url(img/monsters/1.png)');
     //создаем героя
     let hero = new Hero('hero', 100, 10, document.getElementById('player'));
 
@@ -24,6 +24,7 @@ function level1() {
 
     //при клике на монстра, вызываем функцию атаки
     document.getElementById('monster1').addEventListener('click', function () {
+
         hero.attack(monster1);
         monster1.update();
         checkWin(hero, monster1, monster2, monster3);
@@ -42,12 +43,14 @@ function level1() {
     attackMonster(hero, monster1, monster2, monster3);
 
     // слушатель на арену
-    document.getElementById('test').addEventListener('click', function () {
+    document.getElementById('arena').addEventListener('click', function () {
         let monstersDiv = document.querySelectorAll(`.monster`);
         delBlock(monster1, monster2, monster3);
         
         // переход на следю уровень
         if(document.querySelectorAll(`.monster`).length === 0) {
+            hero.health = 200;
+            hero.update();
             level2()
         }
     });
@@ -58,16 +61,15 @@ function level1() {
 //второй уровень
 function level2() {
     document.querySelector('.main').style.backgroundImage = 'url(img/background/3.jpg)';
-    //document.getElementById('game-window').classList.remove('class_off');
     //создаем монстров
-    let monster1 = new Monster('monster1', 100, 10, 'monster1');
-    let monster2 = new Monster('monster2', 100, 10, 'monster2');
-    let monster3 = new Monster('monster3', 100, 10, 'monster3');
-    let monster4 = new Monster('monster4', 100, 10, 'monster4');
-    let monster5 = new Monster('monster5', 100, 10, 'monster5');
+    let monster1 = new Monster('monster1', 160, 10, 'monster1', 'url(img/monsters/2.png)');
+    let monster2 = new Monster('monster2', 160, 10, 'monster2', 'url(img/monsters/2.png)');
+    let monster3 = new Monster('monster3', 160, 10, 'monster3', 'url(img/monsters/2.png)');
+    let monster4 = new Monster('monster4', 160, 10, 'monster4', 'url(img/monsters/2.png)');
+    let monster5 = new Monster('monster5', 160, 10, 'monster5', 'url(img/monsters/2.png)');
     //создаем героя
 
-    let hero = new Hero('hero', 100, 10, document.getElementById('player'));
+    let hero = new Hero('hero', 200, 20, document.getElementById('player'));
 
     const game = new Observer();
     game.subscribe(monster1);
@@ -121,13 +123,15 @@ function level2() {
     attackMonster(hero, monster1, monster2, monster3, monster4, monster5);
 
     // слушатель на арену
-    document.getElementById('test').addEventListener('click', function () {
+    document.getElementById('arena').addEventListener('click', function () {
         let monstersDiv = document.querySelectorAll(`.monster`);
-        delBlock(monster1, monster2, monster3, monster4, monster5);
-        
+        delBlock( monster1, monster2, monster3, monster4, monster5);
+
         // переход на следю уровень
         if(document.querySelectorAll(`.monster`).length === 0) {
-            level1()
+            hero.health = 300;
+            hero.update();
+            level3()
         }
     });
 }

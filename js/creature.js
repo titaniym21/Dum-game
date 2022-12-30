@@ -6,7 +6,9 @@ class Creature {
         this.name = name;
         this.health = health;
         this.damage = damage;
+        this.idElement = idElement;
     }
+
 
     //метод для атаки
     attack(target) {
@@ -21,11 +23,16 @@ class Creature {
 
 //клас для монстров наследуется от класса Creature
 class Monster extends Creature {
-    constructor(name, health, damage, idElement) {
+    constructor(name, health, damage, idElement , img) {
         super(name, health, damage, idElement);
+        this.img = img;
         this.idElement = idElement;
     }
 
+    //переопределяем метод setImg
+    setImg() {
+        document.getElementById(this.idElement).style.backgroundImage = this.img;
+    }
     //метод для добавления монстра на страницу
     addMonster() {
         let monsterElement = document.createElement('div');
@@ -37,7 +44,12 @@ class Monster extends Creature {
         healMonster.classList.add('healMonster');
         healMonsterBox.appendChild(healMonster);
         monsterElement.appendChild(healMonsterBox);
-        document.getElementById('test').appendChild(monsterElement);
+        document.getElementById('arena').appendChild(monsterElement);
+        this.setImg();
+    }
+    attack(target) {
+        super.attack(target);
+        monsterAtack.play();
     }
 }
 
@@ -46,6 +58,11 @@ class Hero extends Creature {
     constructor(name, health, damage, idElement) {
         super(name, health, damage, idElement);
         this.idElement = idElement;
+    }
+
+    attack(target) {
+        super.attack(target);
+        heroAtack.play();
     }
 
     //переписал метод для героя что бы он указывал на его хп

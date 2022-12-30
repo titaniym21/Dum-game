@@ -29,7 +29,11 @@ document.getElementById('audio-button').addEventListener('click', function () {
 });
 
 
+const heroAtack = new Audio();
+heroAtack.src = 'music/effect/dsbdcls.mp3';
 
+const monsterAtack = new Audio();
+monsterAtack.src = 'music/effect/dsbgsit1.mp3';
 
 
 

@@ -43,23 +43,19 @@ function delBlock(...monsters) {
 
 //функция атаки одного из монстров на игрока раз в 3 - 5 секунд рандомно
 function attackMonster(hero, ...monsters) {
-    setInterval(() => {
         monsters.forEach(monster => {
-            if (monster.health > 0) {
-                monster.attack(hero);
-                console.log(`${monster.name} attack ${hero.name} for ${monster.damage} damage`);
-                hero.update();
-                checkWin(hero, ...monsters);
-            }
-        });
-    }, 3000 + Math.random() * 5000);
-
-
+            setInterval(() => {
+                if (monster.health > 0) {
+                    monster.attack(hero);
+                    hero.update();
+                    checkWin(hero, monster);
+                }
+        }, 3000 + Math.random() * 5000);
+    });
 }
 
 //старт игры
 document.getElementById('star-game').addEventListener('click', function () {
-    //первый уровень
     level1();
 });
 

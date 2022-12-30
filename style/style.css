@@ -154,7 +154,6 @@ body, html {
 .monster {
     width: 200px;
     height: 500px;
-    background-image: url(../img/monsters/1.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;

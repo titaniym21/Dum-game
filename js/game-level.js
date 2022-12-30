@@ -45,6 +45,11 @@ function level1() {
     document.getElementById('test').addEventListener('click', function () {
         let monstersDiv = document.querySelectorAll(`.monster`);
         delBlock(monster1, monster2, monster3);
+        
+        // переход на следю уровень
+        if(document.querySelectorAll(`.monster`).length === 0) {
+            level2()
+        }
     });
     
 }
@@ -79,6 +84,12 @@ function level2() {
     monster4.addMonster();
     monster5.addMonster();
 
+
+    monster1.update();
+    monster2.update();
+    monster3.update();
+    monster4.update();
+    monster5.update();
     //при клике на монстра, вызываем функцию атаки
     document.getElementById('monster1').addEventListener('click', function () {
         hero.attack(monster1);
@@ -109,4 +120,14 @@ function level2() {
     });
     attackMonster(hero, monster1, monster2, monster3, monster4, monster5);
 
+    // слушатель на арену
+    document.getElementById('test').addEventListener('click', function () {
+        let monstersDiv = document.querySelectorAll(`.monster`);
+        delBlock(monster1, monster2, monster3, monster4, monster5);
+        
+        // переход на следю уровень
+        if(document.querySelectorAll(`.monster`).length === 0) {
+            level1()
+        }
+    });
 }

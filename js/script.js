@@ -34,6 +34,9 @@ function delBlock(...monsters) {
 
     if (check) {
         document.querySelectorAll(`.monster`).forEach(mobs => mobs.remove());
+        monsters.map((monster) => {
+            monster.health = 100
+        })
     }
 }
 

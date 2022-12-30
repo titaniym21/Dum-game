@@ -25,6 +25,19 @@ function checkWin(hero, ...monsters) {
 }
 
 
+function delBlock(...monsters) {
+    let check = monsters.every(monster => {
+        if (monster.health <= 0){
+            return true
+        }
+    });
+
+    if (check) {
+        document.querySelectorAll(`.monster`).forEach(mobs => mobs.remove());
+    }
+}
+
+
 //функция атаки одного из монстров на игрока раз в 3 - 5 секунд рандомно
 function attackMonster(hero, ...monsters) {
     setInterval(() => {

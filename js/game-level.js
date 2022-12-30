@@ -27,6 +27,7 @@ function level1() {
         hero.attack(monster1);
         monster1.update();
         checkWin(hero, monster1, monster2, monster3);
+        delBlock(monster1, monster2, monster3)
     });
     document.getElementById('monster2').addEventListener('click', function () {
         hero.attack(monster2);
@@ -39,6 +40,13 @@ function level1() {
         checkWin(hero, monster1, monster2, monster3);
     });
     attackMonster(hero, monster1, monster2, monster3);
+
+    // слушатель на арену
+    document.getElementById('test').addEventListener('click', function () {
+        let monstersDiv = document.querySelectorAll(`.monster`);
+        delBlock(monster1, monster2, monster3);
+    });
+    
 }
 
 

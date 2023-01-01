@@ -34,25 +34,9 @@ function delBlock(...monsters) {
 
     if (check) {
         document.querySelectorAll(`.monster`).forEach(mobs => mobs.remove());
-        monsters.map((monster) => {
-            monster.health = 100
-        })
     }
 }
 
-
-//функция атаки одного из монстров на игрока раз в 3 - 5 секунд рандомно
-function attackMonster(hero, ...monsters) {
-        monsters.forEach(monster => {
-            setInterval(() => {
-                if (monster.health > 0) {
-                    monster.attack(hero);
-                    hero.update();
-                    checkWin(hero, monster);
-                }
-        }, 3000 + Math.random() * 5000);
-    });
-}
 
 //старт игры
 document.getElementById('star-game').addEventListener('click', function () {

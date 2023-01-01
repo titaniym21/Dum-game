@@ -13,6 +13,7 @@ class Creature {
     //метод для атаки
     attack(target) {
         target.health -= this.damage;
+        target.update();
     }
 
     //метод для обновления данных в % на странице
@@ -48,8 +49,17 @@ class Monster extends Creature {
         this.setImg();
     }
     attack(target) {
-        super.attack(target);
-        monsterAtack.play();
+        setTimeout(() => {
+            if (target.health > 0 && this.health > 0) {
+                super.attack(target);
+                monsterAtack.play();
+                target.update();
+            }
+        }, 3000 + Math.random() * 5000);
+    }
+
+    update() {
+        super.update();
     }
 }
 
@@ -65,7 +75,6 @@ class Hero extends Creature {
         heroAtack.play();
     }
 
-    //переписал метод для героя что бы он указывал на его хп
     update() {
         document.getElementById('player').querySelector('.personHealText').textContent = this.health;
     }

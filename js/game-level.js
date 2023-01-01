@@ -5,133 +5,113 @@ function level1() {
     document.querySelector('.main').style.backgroundImage = 'url(img/background/2.jpg)';
     document.getElementById('game-window').classList.remove('class_off');
     //создаем монстров
-    let monster1 = new Monster('monster1', 100, 10, 'monster1', 'url(img/monsters/1.png)');
-    let monster2 = new Monster('monster2', 100, 10, 'monster2', 'url(img/monsters/1.png)');
-    let monster3 = new Monster('monster3', 100, 10, 'monster3', 'url(img/monsters/1.png)');
+    let monster1Level1 = new Monster('monster1Level1', 100, 10, 'monster1Level1', 'url(img/monsters/1.png)');
+    let monster2Level1 = new Monster('monster2Level1', 100, 10, 'monster2Level1', 'url(img/monsters/1.png)');
     //создаем героя
-    let hero = new Hero('hero', 100, 10, document.getElementById('player'));
+    let heroLevel1 = new Hero('hero', 100, 10, document.getElementById('player'));
 
-    const game = new Observer();
-    game.subscribe(monster1);
-    game.subscribe(monster2);
-    game.subscribe(monster3);
-    game.subscribe(hero);
+    const game1 = new Observer();
+    game1.subscribe(monster1Level1);
+    game1.subscribe(monster2Level1);
+    game1.subscribe(heroLevel1);
+
+
 
     //добавляем монстров на страницу
-    monster1.addMonster();
-    monster2.addMonster();
-    monster3.addMonster();
+    monster1Level1.addMonster();
+    monster2Level1.addMonster();
 
     //при клике на монстра, вызываем функцию атаки
-    document.getElementById('monster1').addEventListener('click', function () {
+    document.getElementById('monster1Level1').addEventListener('click', function () {
+        heroLevel1.attack(monster1Level1);
+    });
+    document.getElementById('monster2Level1').addEventListener('click', function () {
+        heroLevel1.attack(monster2Level1);
+    });
 
-        hero.attack(monster1);
-        monster1.update();
-        checkWin(hero, monster1, monster2, monster3);
-        delBlock(monster1, monster2, monster3)
-    });
-    document.getElementById('monster2').addEventListener('click', function () {
-        hero.attack(monster2);
-        monster2.update();
-        checkWin(hero, monster1, monster2, monster3);
-    });
-    document.getElementById('monster3').addEventListener('click', function () {
-        hero.attack(monster3);
-        monster3.update();
-        checkWin(hero, monster1, monster2, monster3);
-    });
-    attackMonster(hero, monster1, monster2, monster3);
+    // пока у монстров есть жизни, они атакуют героя раз в 2 секунды
+    if (monster1Level1.health > 0 || monster2Level1.health > 0 || heroLevel1.health > 0) {
+        monster1Level1.attack(heroLevel1);
+        monster2Level1.attack(heroLevel1);
+        heroLevel1.update();
+        checkWin(heroLevel1, monster1Level1, monster2Level1);
+    }
+    else {
+        game1.unsubscribe(heroLevel1);
+        game1.unsubscribe(monster1Level1);
+        game1.unsubscribe(monster2Level1);
+        heroLevel1 = null;
+        monster1Level1 = null;
+        monster2Level1 = null;
+        //удалить блоки
+        delBlock(monster1Level1, monster2Level1);
+    }
 
+    
     // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
         let monstersDiv = document.querySelectorAll(`.monster`);
-        delBlock(monster1, monster2, monster3);
-        
+        delBlock( monster1Level1, monster2Level1);
         // переход на следю уровень
         if(document.querySelectorAll(`.monster`).length === 0) {
-            hero.health = 200;
-            hero.update();
-            level2()
+            level2();
         }
     });
-    
 }
 
 
-//второй уровень
 function level2() {
+    //первый уровень
     document.querySelector('.main').style.backgroundImage = 'url(img/background/3.jpg)';
     //создаем монстров
-    let monster1 = new Monster('monster1', 160, 10, 'monster1', 'url(img/monsters/2.png)');
-    let monster2 = new Monster('monster2', 160, 10, 'monster2', 'url(img/monsters/2.png)');
-    let monster3 = new Monster('monster3', 160, 10, 'monster3', 'url(img/monsters/2.png)');
-    let monster4 = new Monster('monster4', 160, 10, 'monster4', 'url(img/monsters/2.png)');
-    let monster5 = new Monster('monster5', 160, 10, 'monster5', 'url(img/monsters/2.png)');
+    let monster1Level2 = new Monster('monster1Level1', 100, 10, 'monster1Level1', 'url(img/monsters/1.png)');
+    let monster2Level2 = new Monster('monster2Level1', 100, 10, 'monster2Level1', 'url(img/monsters/1.png)');
     //создаем героя
+    let heroLevel2 = new Hero('hero', 100, 10, document.getElementById('player'));
 
-    let hero = new Hero('hero', 200, 20, document.getElementById('player'));
+    const game2 = new Observer();
+    game2.subscribe(monster1Level2);
+    game2.subscribe(monster2Level2);
+    game2.subscribe(heroLevel2);
 
-    const game = new Observer();
-    game.subscribe(monster1);
-    game.subscribe(monster2);
-    game.subscribe(monster3);
-    game.subscribe(monster4);
-    game.subscribe(monster5);
-    game.subscribe(hero);
+
 
     //добавляем монстров на страницу
-    monster1.addMonster();
-    monster2.addMonster();
-    monster3.addMonster();
-    monster4.addMonster();
-    monster5.addMonster();
+    monster1Level2.addMonster();
+    monster2Level2.addMonster();
 
-
-    monster1.update();
-    monster2.update();
-    monster3.update();
-    monster4.update();
-    monster5.update();
     //при клике на монстра, вызываем функцию атаки
-    document.getElementById('monster1').addEventListener('click', function () {
-        hero.attack(monster1);
-        monster1.update();
-        checkWin(hero, monster1, monster2, monster3, monster4, monster5)
+    document.getElementById('monster1Level2').addEventListener('click', function () {
+        heroLevel2.attack(monster1Level2);
     });
-    document.getElementById('monster2').addEventListener('click', function () {
-        hero.attack(monster2);
-        monster2.update();
-        checkWin(hero, monster1, monster2, monster3, monster4, monster5)
-    });
-    document.getElementById('monster3').addEventListener('click', function () {
-        hero.attack(monster3);
-        monster3.update();
-        checkWin(hero, monster1, monster2, monster3, monster4, monster5)
+    document.getElementById('monster2Level2').addEventListener('click', function () {
+        heroLevel2.attack(monster2Level2);
     });
 
-    document.getElementById('monster4').addEventListener('click', function () {
-        hero.attack(monster4);
-        monster4.update();
-        checkWin(hero, monster1, monster2, monster3, monster4, monster5)
-    });
+    // пока у монстров есть жизни, они атакуют героя раз в 2 секунды
+    if (monster1Level2.health > 0 || monster2Level2.health > 0 || heroLevel2.health > 0) {
+        monster1Level2.attack(heroLevel2);
+        monster2Level2.attack(heroLevel2);
+        heroLevel2.update();
+        checkWin(heroLevel2, monster1Level2, monster2Level2);
+    }
+    else {
+        game2.unsubscribe(heroLevel2);
+        game2.unsubscribe(monster1Level2);
+        game2.unsubscribe(monster2Level2);
+        heroLevel2 = null;
+        monster1Level2 = null;
+        monster2Level2 = null;
+    }
 
-    document.getElementById('monster5').addEventListener('click', function () {
-        hero.attack(monster5);
-        monster5.update();
-        checkWin(hero, monster1, monster2, monster3, monster4, monster5)
-    });
-    attackMonster(hero, monster1, monster2, monster3, monster4, monster5);
 
     // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
         let monstersDiv = document.querySelectorAll(`.monster`);
-        delBlock( monster1, monster2, monster3, monster4, monster5);
-
+        delBlock( monster1Level2, monster2Level2);
         // переход на следю уровень
         if(document.querySelectorAll(`.monster`).length === 0) {
-            hero.health = 300;
-            hero.update();
-            level3()
+            level2();
         }
     });
 }

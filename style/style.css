@@ -178,12 +178,19 @@ body, html {
 
 .scoreBox {
     position: fixed;
-    right: 30px;
-    bottom: 30px;
-
+    left: 30px;
+    bottom: 20px;
+    display: flex;
 }
 
 .score {
+    font-weight: 800;
     font-size: 36px;
-    color: rgb(8, 121, 121);
+    color: rgb(0, 0, 0);
+}
+
+.scoreText {
+    font-weight: 800;
+    font-size: 36px;
+    color: rgb(0, 0, 0);
 }

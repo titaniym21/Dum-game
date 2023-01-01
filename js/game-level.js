@@ -44,6 +44,20 @@ function level1() {
         // monster2Level1 = null;
     }
 
+    // счет убийст
+    document.getElementById('monster1Level1').addEventListener('click', function () {
+        const score = document.querySelector(`.score`)
+        if(monster1Level1.health === 0) {
+            parseInt(score.textContent++) 
+        }
+
+    })
+    document.getElementById('monster2Level1').addEventListener('click', function () {
+        const score = document.querySelector(`.score`)
+        if(monster2Level1.health === 0) {
+            parseInt(score.textContent++) 
+        }
+    })
 
     // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
@@ -104,7 +118,20 @@ function level2() {
         // monster2Level2 = null;
     }
 
-    console.log(monster2Level2)
+    // счет убийст
+    document.getElementById('monster1Level2').addEventListener('click', function () {
+        const score = document.querySelector(`.score`)
+        if(monster1Level2.health === 0) {
+            parseInt(score.textContent++) 
+        }
+
+    })
+    document.getElementById('monster2Level2').addEventListener('click', function () {
+        const score = document.querySelector(`.score`)
+        if(monster2Level2.health === 0) {
+            parseInt(score.textContent++) 
+        }
+    })
 
     // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
@@ -163,11 +190,27 @@ function level3() {
         // monster2Level2 = null;
     }
 
+    // счет убийст
+    document.getElementById('monster1Level3').addEventListener('click', function () {
+        const score = document.querySelector(`.score`)
+        if(monster1Level3.health === 0) {
+            parseInt(score.textContent++) 
+        }
+
+    })
+    document.getElementById('monster2Level3').addEventListener('click', function () {
+        const score = document.querySelector(`.score`)
+        if(monster2Level3.health === 0) {
+            parseInt(score.textContent++) 
+        }
+    })
+    
 
     // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
         let monstersDiv = document.querySelectorAll(`.monster`);
         delBlock( monster1Level3, monster2Level3);
+
         // переход на следю уровень
         if(document.querySelectorAll(`.monster`).length === 0) {
             level1();

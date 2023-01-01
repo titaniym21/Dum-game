@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Doom Game</title>
     <link href="./style/style.css" rel="stylesheet">
+    <script defer src="./js/localStorage.js"></script>
     <script defer src="./js/creature.js"></script>
     <script defer src="./js/observer.js"></script>
     <script defer src="./js/game-level.js"></script>
@@ -13,30 +14,35 @@
     <script defer src="./js/script.js"></script>
 </head>
 <body>
-<div class="main">
-    <div class="container main-menu">
-        <div class="player" id="audio-button"></div>
-        <div class="game_buttons">
-            <div class="menu_button" id="star-game">Start game</div>
-            <div class="menu_button" id="exit-game">Exit</div>
-        </div>
-    </div>
-    <div class="container main-game">
-        <div class="gameMain" id="game-window">
-            <div class="arenaBox" id="arena">
+    <main class="main">
+        <section class="container main-menu">
+            <div class="player" id="audio-button"></div>
+            <div class="game_buttons">
+                <div class="menu_button" id="star-game">Start game</div>
+                <div class="menu_button" id="exit-game">Exit</div>
             </div>
-            <div class="personBox" id="player">
-                <div class="personBar">
-                    <div class="personBarHeal">
-                        <p class="personHealText personTextDecor">100</p>
-                        <p class="personHealTextAbout personTextDecor">:Health</p>
+        </section>
+        <section class="container main-game">
+            <div class="gameMain" id="game-window">
+                <div class="arenaBox" id="arena">
+                </div>
+                <div class="personBox" id="player">
+                    <div class="personBar">
+                        <div class="personBarHeal">
+                            <p class="personHealText personTextDecor">100</p>
+                            <p class="personHealTextAbout personTextDecor">:Health</p>
+                        </div>
+                        <div class="personWeapon"></div>
+                        <div class="personIcon"></div>
                     </div>
-                    <div class="personWeapon"></div>
-                    <div class="personIcon"></div>
+                </div>
+                <div class="scoreBox">
+                    <p class="score">0</p>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+            
+        </section>
+
+    </main>
 </body>
 </html>

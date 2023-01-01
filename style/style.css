@@ -118,12 +118,14 @@ body, html {
     border: 1px solid rgb(27, 85, 66);
     border-radius: 10px;
     margin-bottom: 10px;
+    cursor: cell;
 }
 
 .personHealText {
     font-size: 36px;
     font-style: italic;
     font-weight: 800;
+
 }
 
 .personHealTextAbout {
@@ -172,4 +174,16 @@ body, html {
 .healMonster {
     height: 100%;
     background-color: rgb(163, 5, 5);
+}
+
+.scoreBox {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+
+}
+
+.score {
+    font-size: 36px;
+    color: rgb(8, 121, 121);
 }

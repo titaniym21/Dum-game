@@ -16,7 +16,6 @@ function level1() {
     game1.subscribe(heroLevel1);
 
 
-
     //добавляем монстров на страницу
     monster1Level1.addMonster();
     monster2Level1.addMonster();
@@ -43,15 +42,13 @@ function level1() {
         heroLevel1 = null;
         monster1Level1 = null;
         monster2Level1 = null;
-        //удалить блоки
-        delBlock(monster1Level1, monster2Level1);
     }
 
-    
+
     // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
         let monstersDiv = document.querySelectorAll(`.monster`);
-        delBlock( monster1Level1, monster2Level1);
+        delBlock(monster1Level1, monster2Level1);
         // переход на следю уровень
         if(document.querySelectorAll(`.monster`).length === 0) {
             level2();
@@ -64,8 +61,8 @@ function level2() {
     //первый уровень
     document.querySelector('.main').style.backgroundImage = 'url(img/background/3.jpg)';
     //создаем монстров
-    let monster1Level2 = new Monster('monster1Level1', 100, 10, 'monster1Level1', 'url(img/monsters/1.png)');
-    let monster2Level2 = new Monster('monster2Level1', 100, 10, 'monster2Level1', 'url(img/monsters/1.png)');
+    let monster1Level2 = new Monster('monster1Level1', 100, 10, 'monster1Level2', 'url(img/monsters/1.png)');
+    let monster2Level2 = new Monster('monster2Level1', 100, 10, 'monster2Level2', 'url(img/monsters/1.png)');
     //создаем героя
     let heroLevel2 = new Hero('hero', 100, 10, document.getElementById('player'));
 

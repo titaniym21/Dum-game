@@ -48,6 +48,8 @@ class Monster extends Creature {
         document.getElementById('arena').appendChild(monsterElement);
         this.setImg();
     }
+
+
     attack(target) {
         setTimeout(() => {
             if (target.health > 0 && this.health > 0) {

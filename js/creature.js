@@ -10,13 +10,7 @@ class Creature {
     }
 
 
-    //метод для атаки
-    attack(target) {
-        target.health -= this.damage;
-        target.update();
-    }
-
-    //метод для обновления данных в % на странице
+    // //метод для обновления данных в % на странице
     update() {
         document.getElementById(this.name).querySelector('.healMonster').style.width = `${this.health}%`;
     }
@@ -49,17 +43,6 @@ class Monster extends Creature {
         this.setImg();
     }
 
-
-    attack(target) {
-        setTimeout(() => {
-            if (target.health > 0 && this.health > 0) {
-                super.attack(target);
-                monsterAtack.play();
-                target.update();
-            }
-        }, 3000 + Math.random() * 5000);
-    }
-
     update() {
         super.update();
     }
@@ -70,11 +53,6 @@ class Hero extends Creature {
     constructor(name, health, damage, idElement) {
         super(name, health, damage, idElement);
         this.idElement = idElement;
-    }
-
-    attack(target) {
-        super.attack(target);
-        heroAtack.play();
     }
 
     update() {

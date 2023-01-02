@@ -58,9 +58,11 @@ function level1() {
             game1.unsubscribe(monster2Level1);
             game1.unsubscribe(heroLevel1);
             level2();
-            monster1Level1 = null;
-            monster2Level1 = null;
-            heroLevel1 = null;
+            monster1Level1.health = 100;
+            monster2Level1.health = 100;
+            monster1Level1.die = true
+            monster2Level1.die = true
+            heroLevel1.health = 100;
         }
     });
 }
@@ -124,9 +126,11 @@ function level2() {
             game1.unsubscribe(monster2Level2);
             game1.unsubscribe(heroLevel2);
             level3();
-            monster1Level2 = null;
-            monster2Level2 = null;
-            heroLevel2 = null;
+            monster1Level2.health = 100;
+            monster2Level2.health = 100;
+            monster1Level2.die = true;
+            monster2Level2.die = true;
+            heroLevel2.health = 100;
         }
     });
 }
@@ -188,9 +192,11 @@ function level3() {
             game3.unsubscribe(monster1Level3);
             game3.unsubscribe(monster2Level3);
             game3.unsubscribe(heroLevel3);
-            monster1Level3.health = null;
-            monster2Level3.health = null;
-            heroLevel3.health = null;
+            monster1Level3.health = 100;
+            monster2Level3.health = 100;
+            monster1Level3.die = true
+            monster2Level3.die = true
+            heroLevel3.health = 100;
         }
     });
 }

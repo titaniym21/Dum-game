@@ -15,52 +15,28 @@ function level1() {
     game1.subscribe(monster1Level1);
     game1.subscribe(monster2Level1);
     game1.subscribe(heroLevel1);
+    //создаем блок арены
+    arenaBox(monster1Level1, monster2Level1);
 
-
-    //добавляем монстров на страницу
-    monster1Level1.addMonster();
-    monster2Level1.addMonster();
 
     //при клике на монстра, вызываем функцию атаки
     document.getElementById('monster1Level1').addEventListener('click', function () {
         attack(heroLevel1, monster1Level1);
+
     });
     document.getElementById('monster2Level1').addEventListener('click', function () {
         attack(heroLevel1, monster2Level1);
     });
 
+    //автоатака монстров
     autobattle(monster1Level1, heroLevel1);
     autobattle(monster2Level1, heroLevel1);
 
-
-    // счет убийст
-    // document.getElementById('monster1Level1').addEventListener('click', function () {
-    //     const score = document.querySelector(`.score`)
-    //     if(monster1Level1.health === 0) {
-    //         parseInt(score.textContent++) 
-    //     }
-
-    // })
-    // document.getElementById('monster2Level1').addEventListener('click', function () {
-    //     const score = document.querySelector(`.score`)
-    //     if(monster2Level1.health === 0) {
-    //         parseInt(score.textContent++) 
-    //     }
-    // })
-
     // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
-        //let monstersDiv = document.querySelectorAll(`.monster`);
-        delBlock(monster1Level1, monster2Level1);
-        // переход на следю уровень
+        console.log(document.querySelectorAll(`.monster`).length);
         if(document.querySelectorAll(`.monster`).length === 0) {
-            game1.unsubscribe(monster1Level1);
-            game1.unsubscribe(monster2Level1);
-            game1.unsubscribe(heroLevel1);
-            level2();
-            monster1Level1 = null;
-            monster2Level1 = null;
-            heroLevel1 = null;
+            endLevel(monster1Level1, monster2Level1, heroLevel1, game1, level2);
         }
     });
 }
@@ -77,15 +53,13 @@ function level2() {
     //создаем героя
     let heroLevel2 = new Hero('hero', 100, 10, document.getElementById('player'));
 
-    const game1 = new Observer();
-    game1.subscribe(monster1Level2);
-    game1.subscribe(monster2Level2);
-    game1.subscribe(heroLevel2);
+    const game2 = new Observer();
+    game2.subscribe(monster1Level2);
+    game2.subscribe(monster2Level2);
+    game2.subscribe(heroLevel2);
 
-
-    //добавляем монстров на страницу
-    monster1Level2.addMonster();
-    monster2Level2.addMonster();
+    //создаем блок арены
+    arenaBox(monster1Level2, monster2Level2);
 
     //при клике на монстра, вызываем функцию атаки
     document.getElementById('monster1Level2').addEventListener('click', function () {
@@ -94,45 +68,20 @@ function level2() {
     document.getElementById('monster2Level2').addEventListener('click', function () {
         attack(heroLevel2, monster2Level2);
     });
-
+    //автоатака монстров
     autobattle(monster1Level2, heroLevel2);
     autobattle(monster2Level2, heroLevel2);
 
-
-    // счет убийст
-    // document.getElementById('monster1Level1').addEventListener('click', function () {
-    //     const score = document.querySelector(`.score`)
-    //     if(monster1Level1.health === 0) {
-    //         parseInt(score.textContent++) 
-    //     }
-
-    // })
-    // document.getElementById('monster2Level1').addEventListener('click', function () {
-    //     const score = document.querySelector(`.score`)
-    //     if(monster2Level1.health === 0) {
-    //         parseInt(score.textContent++) 
-    //     }
-    // })
-
-    // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
-        //let monstersDiv = document.querySelectorAll(`.monster`);
-        delBlock(monster1Level2, monster2Level2);
-        // переход на следю уровень
         if(document.querySelectorAll(`.monster`).length === 0) {
-            game1.unsubscribe(monster1Level2);
-            game1.unsubscribe(monster2Level2);
-            game1.unsubscribe(heroLevel2);
-            level3();
-            monster1Level2 = null;
-            monster2Level2 = null;
-            heroLevel2 = null;
+            endLevel(monster1Level2, monster2Level2, heroLevel2, game2, level3);
         }
     });
 }
 
 
 function level3() {
+
     //первый уровень
     document.querySelector('.main').style.backgroundImage = 'url(img/background/4.jpg)';
     //создаем монстров
@@ -146,12 +95,8 @@ function level3() {
     game3.subscribe(monster1Level3);
     game3.subscribe(monster2Level3);
     game3.subscribe(heroLevel3);
-
-
-
-    //добавляем монстров на страницу
-    monster1Level3.addMonster();
-    monster2Level3.addMonster();
+    //создаем блок арены
+    arenaBox(monster1Level3, monster2Level3);
 
     document.getElementById('monster1Level3').addEventListener('click', function () {
         attack(heroLevel3, monster1Level3);
@@ -160,38 +105,14 @@ function level3() {
         attack(heroLevel3, monster2Level3);
     });
 
+    //автоатака монстров
     autobattle(monster1Level3, heroLevel3);
     autobattle(monster2Level3, heroLevel3);
 
-
-    // // счет убийст
-    // document.getElementById('monster1Level3').addEventListener('click', function () {
-    //     const score = document.querySelector(`.score`)
-    //     if(monster1Level3.health === 0) {
-    //         parseInt(score.textContent++) 
-    //     }
-
-    // })
-    // document.getElementById('monster2Level3').addEventListener('click', function () {
-    //     const score = document.querySelector(`.score`)
-    //     if(monster2Level3.health === 0) {
-    //         parseInt(score.textContent++) 
-    //     }
-    // })
-
-    // слушатель на арену
     document.getElementById('arena').addEventListener('click', function () {
-        //let monstersDiv = document.querySelectorAll(`.monster`);
-        delBlock(monster1Level3, monster2Level3);
-        // переход на следю уровень
-        if(document.querySelectorAll(`.monster`).length === 0) {
-            game3.unsubscribe(monster1Level3);
-            game3.unsubscribe(monster2Level3);
-            game3.unsubscribe(heroLevel3);
-            monster1Level3.health = null;
-            monster2Level3.health = null;
-            heroLevel3.health = null;
+        if (document.querySelectorAll(`.monster`).length == 0) {
+            endGame();
         }
     });
 }
-    
+

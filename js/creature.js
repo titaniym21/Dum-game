@@ -18,7 +18,7 @@ class Creature {
 
 //клас для монстров наследуется от класса Creature
 class Monster extends Creature {
-    constructor(name, health, damage, idElement , img) {
+    constructor(name, health, damage, idElement, img) {
         super(name, health, damage, idElement);
         this.img = img;
         this.idElement = idElement;
@@ -28,6 +28,7 @@ class Monster extends Creature {
     setImg() {
         document.getElementById(this.idElement).style.backgroundImage = this.img;
     }
+
     //метод для добавления монстра на страницу
     addMonster() {
         let monsterElement = document.createElement('div');

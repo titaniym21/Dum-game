@@ -49,6 +49,7 @@ function autobattle(monster, hero) {
                     hero.update();
                     console.log(`${monster.name} attack ${hero.name}`);
                 }
+                
                 if (hero.health <= 0) {
                     hero.health = 0;
                     hero.update();
@@ -59,9 +60,9 @@ function autobattle(monster, hero) {
                 }
             }
         }
-        if (hero.health <= 0 || monster.health <= 0) {
+        if (hero.health <= 0 || monster.health <= 0 || monster.die === true) {
             clearInterval(interval);
-            return 0;
+            // return 0;
         }
     }, 2000);
 }

@@ -21,7 +21,8 @@ class Monster extends Creature {
     constructor(name, health, damage, idElement, img) {
         super(name, health, damage, idElement);
         this.img = img;
-        this.idElement = idElement;
+        this.idElement = idElement; 
+        
     }
 
     //переопределяем метод setImg
@@ -42,6 +43,7 @@ class Monster extends Creature {
         monsterElement.appendChild(healMonsterBox);
         document.getElementById('arena').appendChild(monsterElement);
         this.setImg();
+        this.die = false
     }
 
     update() {

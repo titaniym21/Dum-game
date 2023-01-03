@@ -1,5 +1,5 @@
 'use strict';
-
+//
 //создаём елемент Audio
 
 const audio = new Audio();

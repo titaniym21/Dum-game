@@ -1,5 +1,5 @@
 'use strict';
-
+//
 
 //заставка при старте игры
 document.querySelector('.main').style.backgroundImage = 'url(img/background/1.jpg)';

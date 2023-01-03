@@ -194,14 +194,3 @@ body, html {
     font-size: 36px;
     color: rgb(0, 0, 0);
 }
-
-.next_button_text {
-    font-size: 20px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    line-height: 50px;
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 10px;
-}

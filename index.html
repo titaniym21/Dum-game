@@ -36,13 +36,33 @@
                     </div>
                 </div>
                 <div class="scoreBox">
-                    <p class="scoreText">Kills: &nbsp</p>
-                    <p class="score">0</p>
+                    <span class="scoreText">Kills: &nbsp</span>
+                    <span class="score">0</span>
                 </div>
             </div>
-            
+            <div class="game_result" id="gameRes">
+                <div class="game_enter_box">
+                    <div class="your_resalt">
+                        <span class="scores_item_text">Your score: </span>
+                        <span class="scores_item_text" id="scoreRes">0</span>
+                    </div>
+                    <div class="enter_your_name">
+                        <span class="scores_item_text">Your name: </span>
+                        <input class="scores_item_text" id="name" type="text" placeholder="Enter your name">
+                    </div>
+                    <div class="save_button">
+                        <button class="scores_item_text button" id="save" onclick="saveScore()">Save</button>
+                        <button class="scores_item_text button" id="reset" onclick="resert()">Reset</button>
+                    </div>
+                </div>
+                <div class="game_result_box">
+                    <ul class="game_result_list">
+                        <li class="result_list_item">
+                        </li>
+                    </ul>
+                </div>
+            </div>    
         </section>
-
     </main>
 </body>
 </html>

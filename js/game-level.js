@@ -36,7 +36,12 @@ function level1() {
     document.getElementById('arena').addEventListener('click', function () {
         console.log(document.querySelectorAll(`.monster`).length);
         if(document.querySelectorAll(`.monster`).length === 0) {
+            alert ('Вы победили');
             endLevel(monster1Level1, monster2Level1, heroLevel1, game1, level2);
+        }
+        if (heroLevel1.health <= 0) {
+            alert ('Вы проиграли');
+            endLevel(monster1Level1, monster2Level1, heroLevel1, game1, level1);
         }
     });
 }
@@ -74,7 +79,12 @@ function level2() {
 
     document.getElementById('arena').addEventListener('click', function () {
         if(document.querySelectorAll(`.monster`).length === 0) {
+            alert ('Вы победили');
             endLevel(monster1Level2, monster2Level2, heroLevel2, game2, level3);
+        }
+        if (heroLevel2.health <= 0) {
+            alert ('Вы проиграли');
+            endLevel(monster1Level2, monster2Level2, heroLevel2, game2, level2);
         }
     });
 }
@@ -111,7 +121,12 @@ function level3() {
 
     document.getElementById('arena').addEventListener('click', function () {
         if (document.querySelectorAll(`.monster`).length == 0) {
+            alert ('Вы победили');
             endGame();
+        }
+        if (heroLevel3.health <= 0) {
+            alert ('Вы проиграли');
+            endLevel(monster1Level3, monster2Level3, heroLevel3, game3, level3);
         }
     });
 }

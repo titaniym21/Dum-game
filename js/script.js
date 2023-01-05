@@ -4,6 +4,7 @@
 //заставка при старте игры
 document.querySelector('.main').style.backgroundImage = 'url(img/background/1.jpg)';
 document.getElementById('game-window').classList.add('class_off');
+document.getElementById('gameRes').style.display = 'none';
 
 
 function delBlock(...monsters) {
@@ -33,6 +34,9 @@ function attack(main, target) {
         // счетчик убийств записал сюда
         const score = document.querySelector(`.score`)
         parseInt(score.textContent++)
+        //записать значение score в localStorage
+        localStorage.setItem('score', score.textContent)
+        console.log(localStorage.getItem('score'))
         // удаление монстра
         document.getElementById(target.idElement).remove();
     }
@@ -92,11 +96,6 @@ function arenaBox(monster1, monster2) {
     monster2.addMonster();
 }
 
-// заставка в конце игры
-function endGame() {
-    document.getElementById('game-window').classList.add('class_off');
-    document.querySelector('.main').style.backgroundImage = 'url(img/background/5.jpg)';
-}
 
 //старт игры
 document.getElementById('star-game').addEventListener('click', function () {
@@ -104,24 +103,28 @@ document.getElementById('star-game').addEventListener('click', function () {
         document.getElementById('game-window').classList.remove('class_off');
     }
     document.getElementById('star-game').classList.add('class_off');
-    // document.getElementById('nextLevel').classList.add('class_off');
     level1();
 
 });
 
-
+// выход из игры
 document.getElementById('exit-game').addEventListener('click', function () {
     document.querySelector('.main').style.backgroundImage = 'url(img/background/1.jpg)';
     document.getElementById('game-window').classList.add('class_off');
     document.getElementById('star-game').classList.remove('class_off');
     document.getElementById('game-window').style.backgroundImage = '';
     document.querySelector('.score').textContent = 0;
+    document.getElementById('gameRes').style.display = 'none';
 });
 
 
 
-
-
+// заставка в конце игры
+function endGame() {
+    document.getElementById('game-window').classList.add('class_off');
+    document.querySelector('.main').style.backgroundImage = 'url(img/background/5.jpg)';
+    document.getElementById('gameRes').style.display = 'block';
+}
 
 
 

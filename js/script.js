@@ -1,15 +1,8 @@
 'use strict';
-//
-
-//заставка при старте игры
-document.querySelector('.main').style.backgroundImage = 'url(img/background/1.jpg)';
-document.getElementById('game-window').classList.add('class_off');
-document.getElementById('gameRes').style.display = 'none';
-
-
+//функция удаления блока монстров
 function delBlock(...monsters) {
     let check = monsters.every(monster => {
-        if (monster.health <= 0){
+        if (monster.health <= 0) {
             return true
         }
     });
@@ -17,58 +10,6 @@ function delBlock(...monsters) {
     if (check) {
         document.querySelectorAll(`.monster`).forEach(mobs => mobs.remove());
     }
-}
-
-// функия атаки игрока по монстру
-function attack(main, target) {
-    if (main.health > 0 && target.health > 0) {
-        heroAtack.play();
-        target.health -= main.damage;
-        target.update();
-        console.log(`${main.name} attack ${target.name}`);
-    }
-    if (target.health <= 0) {
-        target.health = 0;
-        target.update();
-        console.log(`${target.name} die`);
-        // счетчик убийств записал сюда
-        const score = document.querySelector(`.score`)
-        parseInt(score.textContent++)
-        //записать значение score в localStorage
-        localStorage.setItem('score', score.textContent)
-        console.log(localStorage.getItem('score'))
-        // удаление монстра
-        document.getElementById(target.idElement).remove();
-    }
-}
-
-//фунция автоатаки по ироку
-function autobattle(monster, hero) {
-    let interval = setInterval(() => {
-        if (hero.health > 0 && monster.health > 0) {
-            if (Math.random() > 0.5) {
-                if (monster.health > 0 && hero.health > 0) {
-                    monsterAtack.play();
-                    hero.health -= monster.damage;
-                    hero.update();
-                    console.log(`${monster.name} attack ${hero.name}`);
-                }
-                
-                if (hero.health <= 0) {
-                    hero.health = 0;
-                    hero.update();
-                    console.log(`${hero.name} die`);
-                    // счетчик убийств записал сюда
-                    const score = document.querySelector(`.score`)
-                    parseInt(score.textContent = 0)
-                }
-            }
-        }
-        if (hero.health <= 0 || monster.health <= 0 || monster.die === true) {
-            clearInterval(interval);
-            // return 0;
-        }
-    }, 2000);
 }
 
 //функция окончания уровня и удаление всех елементов с экрана
@@ -82,6 +23,7 @@ function endLevel(monster1, monster2, hero, observer, callback) {
     observer.unsubscribe(monster1);
     observer.unsubscribe(monster2);
     observer.unsubscribe(hero);
+    observer = null;
     return callback();
 }
 
@@ -97,34 +39,16 @@ function arenaBox(monster1, monster2) {
 }
 
 
-//старт игры
-document.getElementById('star-game').addEventListener('click', function () {
-    if (document.getElementById('game-window').classList == 'class_off') {
-        document.getElementById('game-window').classList.remove('class_off');
-    }
-    document.getElementById('star-game').classList.add('class_off');
-    level1();
-
-});
-
-// выход из игры
-document.getElementById('exit-game').addEventListener('click', function () {
-    document.querySelector('.main').style.backgroundImage = 'url(img/background/1.jpg)';
-    document.getElementById('game-window').classList.add('class_off');
-    document.getElementById('star-game').classList.remove('class_off');
-    document.getElementById('game-window').style.backgroundImage = '';
-    document.querySelector('.score').textContent = 0;
-    document.getElementById('gameRes').style.display = 'none';
-});
-
-
-
 // заставка в конце игры
 function endGame() {
+    const score = document.querySelector(`.score`)
+    document.getElementById('scoreRes').textContent = score.textContent;
     document.getElementById('game-window').classList.add('class_off');
     document.querySelector('.main').style.backgroundImage = 'url(img/background/5.jpg)';
     document.getElementById('gameRes').style.display = 'block';
 }
+
+
 
 
 

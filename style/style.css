@@ -22,7 +22,7 @@ body, html {
     overflow: hidden;
 }
 
-.main-menu {
+.main_menu {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -94,7 +94,6 @@ body, html {
 }
 
 
-
 .personBox {
     width: 100%;
     position: fixed;
@@ -160,7 +159,8 @@ body, html {
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    cursor: pointer;
+    cursor: url(../img/icon/pointer1.png), pointer;
+
 }
 
 .healMonsterBox {
@@ -197,14 +197,14 @@ body, html {
 }
 
 
-.game_result{
+.game_result {
     display: grid;
     grid-template-rows: 1fr 3fr;
     width: 100%;
     height: 100%;
 }
 
-.game_enter_box{
+.game_enter_box {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -213,13 +213,13 @@ body, html {
     width: 100%;
 }
 
-.scores_item_text{
+.scores_item_text {
     font-size: 36px;
     font-weight: 800;
     color: rgb(255, 0, 0);
 }
 
-.button{
+.button {
     width: 200px;
     height: 50px;
     border: 2px solid;
@@ -232,7 +232,7 @@ body, html {
 }
 
 
-.game_result_list{
+.game_result_list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -241,11 +241,15 @@ body, html {
     width: 100%;
 }
 
-.scores_item_box{
+.scores_item_box {
     text-align: center;
 }
 
-.game_result{
+.game_result {
     width: 100%;
     height: 100%;
+}
+
+li {
+    list-style-type: none;
 }

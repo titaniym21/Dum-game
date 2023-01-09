@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Doom Game</title>
     <link href="./style/style.css" rel="stylesheet">
+    <script defer src="./js/main.js"></script>
     <script defer src="./js/localStorage.js"></script>
     <script defer src="./js/creature.js"></script>
     <script defer src="./js/observer.js"></script>
@@ -14,55 +15,55 @@
     <script defer src="./js/script.js"></script>
 </head>
 <body>
-    <main class="main">
-        <section class="container main-menu">
-            <div class="player" id="audio-button"></div>
-            <div class="game_buttons">
-                <div class="menu_button" id="star-game">Start game</div>
-                <div class="menu_button" id="exit-game">Exit</div>
-            </div>
-        </section>
-        <section class="container main-game">
-            <div class="gameMain" id="game-window">
-<!--                <div class="arenaBox" id="arena"></div>-->
-                <div class="personBox" id="player">
-                    <div class="personBar">
-                        <div class="personBarHeal">
-                            <p class="personHealText personTextDecor">100</p>
-                            <p class="personHealTextAbout personTextDecor">:Health</p>
-                        </div>
-                        <div class="personWeapon"></div>
-                        <div class="personIcon"></div>
+<main class="main">
+    <section class="container main_menu">
+        <div class="player" id="audio-button"></div>
+        <div class="game_buttons">
+            <div class="menu_button" id="star-game" onclick="startGame()">Start game</div>
+            <div class="menu_button" id="exit-game" onclick="exitGame()">Exit</div>
+        </div>
+    </section>
+    <section class="container main-game">
+        <div class="gameMain" id="game-window">
+            <!--                <div class="arenaBox" id="arena"></div>-->
+            <div class="personBox" id="player">
+                <div class="personBar">
+                    <div class="personBarHeal">
+                        <p class="personHealText personTextDecor">100</p>
+                        <p class="personHealTextAbout personTextDecor">:Health</p>
                     </div>
-                </div>
-                <div class="scoreBox">
-                    <span class="scoreText">Kills: &nbsp</span>
-                    <span class="score">0</span>
+                    <div class="personWeapon"></div>
+                    <div class="personIcon"></div>
                 </div>
             </div>
-            <div class="game_result" id="gameRes">
-                <div class="game_enter_box">
-                    <div class="your_resalt">
-                        <span class="scores_item_text">Your score: </span>
-                        <span class="scores_item_text" id="scoreRes">0</span>
-                    </div>
-                    <div class="enter_your_name">
-                        <span class="scores_item_text">Your name: </span>
-                        <input class="scores_item_text" id="name" type="text" placeholder="Enter your name">
-                    </div>
-                    <div class="save_button">
-                        <button class="scores_item_text button" id="save" onclick="saveScore()">Save</button>
-                        <button class="scores_item_text button" id="reset" onclick="resert()">Reset</button>
-                    </div>
+            <div class="scoreBox">
+                <span class="scoreText">Kills: &nbsp</span>
+                <span class="score">0</span>
+            </div>
+        </div>
+        <div class="game_result" id="gameRes">
+            <div class="game_enter_box">
+                <div class="your_result">
+                    <span class="scores_item_text">Your score: </span>
+                    <span class="scores_item_text score" id="scoreRes">0</span>
                 </div>
-                <div class="game_result_box">
-                    <ul class="game_result_list">
-                        <li class="result_list_item">
-                        </li>
-                    </ul>
+                <div class="enter_your_name">
+                    <span class="scores_item_text">Your name: </span>
+                    <input class="scores_item_text" id="name" placeholder="Enter your name" type="text">
                 </div>
-            </div>    
-        </section>
-    </main>
+                <div class="save_button">
+                    <button class="scores_item_text button" id="save" onclick="saveScore()">Save</button>
+                    <button class="scores_item_text button" id="reset" onclick="restart()">Reset</button>
+                </div>
+            </div>
+            <div class="game_result_box">
+                <li class="game_result_list">
+                    <!--                    <li class="result_list_item">-->
+                    <!--                    </li>-->
+                </li>
+            </div>
+        </div>
+    </section>
+</main>
 </body>
 </html>
